@@ -1,0 +1,66 @@
+.card-wide.mdl-card {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 850px;
+}
+
+.card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  /* TODO: Twitterのヘッダ画像を引っ張ってくる */
+  background: url('https://pbs.twimg.com/media/C-iqZMYUAAEOo13.jpg:large') center / cover;
+}
+
+.card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+.list-item {
+  width: 500px;
+}
+
+.mdl-list__item-primary-content {
+  width: 200px;
+}
+
+#iconAndLinks {
+  margin-top: 20px;
+}
+
+#iconAndLinks img {
+  display:inline-block;
+  vertical-align: middle;
+  width: 300px;
+  height: 300px;
+}
+
+#sns {
+  width: 500px;
+  height: 300px;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+.social-btn {
+  cursor: pointer;
+  margin: 0 16px;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+h3 a {
+  text-decoration: none;
+  color: #444;
+}
+
+h3 a i {
+  width: 22px;
+  height: 22px;
+}
+
+.mdl-list__item-primary-content {
+  height: 20px;
+}
