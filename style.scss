@@ -1,3 +1,6 @@
+---
+---
+
 body {
   background-color: #002B36;
   margin-top: 30px;
@@ -7,13 +10,17 @@ h1 {
   color: #2AA198;
 }
 
-.fa-ul li a {
-  color: #93A1A1;
-  cursor: pointer;
+.fa-ul {
+  li {
+    color: #657B83;
+    a {
+      color: #93A1A1;
+      cursor: pointer;
+    }
+  }
 }
 
 img {
-  border-radius: 150px;
   width: 300px;
   height: 300px;
 }
@@ -22,12 +29,14 @@ img {
   color: #CB4B16;
 }
 
-ul li {
-  color: #657B83;
-}
+ul{
+  li {
+    color: #657B83;
+  }
 
-ul span {
-  color: #657B83;
+  span {
+    color: #657B83;
+  }
 }
 
 .portfolio p {
