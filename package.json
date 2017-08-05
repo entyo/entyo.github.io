@@ -16,7 +16,17 @@
   },
   "homepage": "https://github.com/entyo/entyo.github.io#readme",
   "dependencies": {
+  },
+  "devDependencies": {
     "font-awesome": "^4.7.0",
-    "skeleton-css": "^2.0.4"
+    "url-loader": "^0.5.9",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "2.0.0-rc.3",
+    "file-loader": "^0.11.2",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^5.0.1",
+    "skeleton-sass-official": "^3.1.4",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.1"
   }
 }
