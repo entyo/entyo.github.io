@@ -33,23 +33,36 @@ h2 {
   border-radius: 150px;
   width: 300px;
   height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.right-side {
+  margin: 0;
 }
 
 .about-me {
   margin-bottom: 50px;
   background-color: #073642;
+  padding: 20px;
 }
 
 .portfolio {
+  margin-bottom: 50px;
   background-color: #073642;
   p {
     color: #6C71C4;
   }
+  padding: 20px;
 }
 
 .artwork-icon {
   width: 200px;
   height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .what-i-made {
