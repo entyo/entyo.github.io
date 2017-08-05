@@ -37,6 +37,14 @@ h2 {
 
 .about-me {
   margin-bottom: 50px;
+  background-color: #073642;
+}
+
+.portfolio {
+  background-color: #073642;
+  p {
+    color: #6C71C4;
+  }
 }
 
 .artwork-icon {
@@ -59,8 +67,4 @@ ul {
   span {
     color: #657B83;
   }
-}
-
-.portfolio p {
-  color: #6C71C4;
 }
