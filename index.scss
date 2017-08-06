@@ -88,3 +88,9 @@ ul {
 .my-links {
   list-style-type: none;
 }
+
+.row .columns {
+  display: inline-block;
+  float: none;
+  vertical-align: middle;
+}
