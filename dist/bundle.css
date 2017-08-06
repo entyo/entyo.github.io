@@ -3717,11 +3717,6 @@ h2 {
   color: #B58900;
 }
 
-.fa-ul li a {
-  color: #93A1A1;
-  cursor: pointer;
-}
-
 .profile-icon {
   border-radius: 150px;
   width: 300px;
@@ -3772,6 +3767,25 @@ ul li {
   color: #657B83;
 }
 
+ul li a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul li a i {
+  color: #93A1A1;
+}
+
 ul span {
   color: #657B83;
+}
+
+.my-links {
+  list-style-type: none;
+}
+
+.row .columns {
+  display: inline-block;
+  float: none;
+  vertical-align: middle;
 }
