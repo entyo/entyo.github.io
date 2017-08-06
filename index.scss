@@ -67,11 +67,13 @@ h2 {
 
 .self-introduction {
   color: #CB4B16;
+  font-size: 16px;
 }
 
 ul {
   li {
     color: #657B83;
+    font-size: 22px;
     a {
       text-decoration: none;
       cursor: pointer;
@@ -93,4 +95,33 @@ ul {
   display: inline-block;
   float: none;
   vertical-align: middle;
+}
+
+@media (max-width: 550px) {
+
+  .container {
+    max-width: 280px;
+  }
+
+  .profile-icon {
+    border-radius: 100px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .artwork-icon {
+    border-radius: 70px;
+    width: 140px;
+    height: 140px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 550px) and (max-width: 750px) {
+  .container {
+    max-width: 550px;
+  }
 }
