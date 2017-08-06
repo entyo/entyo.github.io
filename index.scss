@@ -24,11 +24,6 @@ h2 {
   color: #B58900;
 }
 
-.fa-ul li a {
-  color: #93A1A1;
-  cursor: pointer;
-}
-
 .profile-icon {
   border-radius: 150px;
   width: 300px;
@@ -77,8 +72,19 @@ h2 {
 ul {
   li {
     color: #657B83;
+    a {
+      text-decoration: none;
+      cursor: pointer;
+      i {
+        color: #93A1A1;
+      }
+    }
   }
   span {
     color: #657B83;
   }
+}
+
+.my-links {
+  list-style-type: none;
 }
