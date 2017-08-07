@@ -3775,10 +3775,12 @@ ul li a {
 }
 
 ul li a i {
+  vertical-align: middle;
   color: #93A1A1;
 }
 
-ul span {
+ul li a span {
+  vertical-align: middle;
   color: #657B83;
 }
 
@@ -3806,8 +3808,20 @@ ul span {
     width: 140px;
     height: 140px;
   }
+  h1 {
+    font-size: 24px;
+  }
   h2 {
-    font-size: 28px;
+    font-size: 22px;
+  }
+  li {
+    font-size: 14px !important;
+  }
+  .self-introduction {
+    font-size: 12px;
+  }
+  .portfolio p {
+    font-size: 12px;
   }
 }
 
