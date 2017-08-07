@@ -17,20 +17,13 @@ body {
 }
 
 h1 {
+  font-size: 2.2vw;
   color: #2AA198;
 }
 
 h2 {
+  font-size: 1.9vw;
   color: #B58900;
-}
-
-.profile-icon {
-  border-radius: 150px;
-  width: 300px;
-  height: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
 }
 
 .right-side {
@@ -52,28 +45,23 @@ h2 {
   padding: 20px;
 }
 
-.artwork-icon {
-  width: 200px;
-  height: 200px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 100px;
-}
-
 .what-i-made {
   margin: 40px 0 40px 0;
 }
 
 .self-introduction {
   color: #CB4B16;
-  font-size: 16px;
+  font-size: 0.8vw;
+}
+
+.portfolio p {
+    font-size: 0.8vw;
 }
 
 ul {
   li {
     color: #657B83;
-    font-size: 22px;
+    font-size: 1.0vw;
     a {
       text-decoration: none;
       cursor: pointer;
@@ -100,47 +88,18 @@ ul {
   vertical-align: middle;
 }
 
-@media (max-width: 550px) {
-
-  .container {
-    max-width: 280px;
-  }
-
-  .profile-icon {
-    border-radius: 100px;
-    width: 200px;
-    height: 200px;
-  }
-
-  .artwork-icon {
-    border-radius: 70px;
-    width: 140px;
-    height: 140px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  h2 {
-    font-size: 22px;
-  }
-
-  li {
-    font-size: 14px !important;
-  }
-
-  .self-introduction {
-    font-size: 12px;
-  }
-
-  .portfolio p {
-    font-size: 12px;
-  }
+.container {
+  max-width: 75%;
 }
 
-@media (min-width: 550px) and (max-width: 750px) {
-  .container {
-    max-width: 550px;
-  }
+.profile-icon {
+  border-radius: 100%;
+  width: 60%;
+  height: 60%;
+}
+
+.artwork-icon {
+  border-radius: 100%;
+  width: 40%;
+  height: 40%;
 }
