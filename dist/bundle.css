@@ -3745,16 +3745,16 @@ h2 {
 
 .self-introduction {
   color: #CB4B16;
-  font-size: 0.8vw;
+  font-size: 1.2vw;
 }
 
 .portfolio p {
-  font-size: 0.8vw;
+  font-size: 1.2vw;
 }
 
 ul li {
   color: #657B83;
-  font-size: 1.0vw;
+  font-size: 1.6vw;
 }
 
 ul li a {
@@ -3786,14 +3786,19 @@ ul li a span {
   max-width: 75%;
 }
 
-.profile-icon {
+.profile-icon, .artwork-icon {
   border-radius: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-icon {
   width: 60%;
   height: 60%;
 }
 
 .artwork-icon {
-  border-radius: 100%;
   width: 40%;
   height: 40%;
 }
