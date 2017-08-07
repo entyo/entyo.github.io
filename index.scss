@@ -92,14 +92,19 @@ ul {
   max-width: 75%;
 }
 
-.profile-icon {
+.profile-icon, .artwork-icon {
   border-radius: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-icon {
   width: 60%;
   height: 60%;
 }
 
 .artwork-icon {
-  border-radius: 100%;
   width: 40%;
   height: 40%;
 }
