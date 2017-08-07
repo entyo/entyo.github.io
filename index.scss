@@ -78,12 +78,15 @@ ul {
       text-decoration: none;
       cursor: pointer;
       i {
+        vertical-align: middle;
         color: #93A1A1;
       }
+
+      span {
+        vertical-align: middle;
+        color: #657B83;
+      }
     }
-  }
-  span {
-    color: #657B83;
   }
 }
 
