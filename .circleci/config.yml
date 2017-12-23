@@ -1,0 +1,19 @@
+version: 2
+
+jobs:
+  deploy_stage_job:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - run:
+        name: Deploy to ghpages
+        command: ./scripts/deploy-ghpages.sh
+
+workflows:
+  version: 2
+  deployment:
+    jobs:
+      - deploy_stage_job:
+        filters:
+          branches:
+            only: master
