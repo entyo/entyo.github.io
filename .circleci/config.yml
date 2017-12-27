@@ -1,19 +1,64 @@
-version: 2
+version: 2.0
+
+references:
+  container_config: &container_config
+    docker:
+      - image: circleci/node
+    working_directory: ~/ghpages-sandbox
+
+  workspace_root: &workspace_root
+      /tmp/workspace
+
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace_root
 
 jobs:
-  deploy_stage_job:
-    docker:
-      - image: circleci/node:latest
+  build:
+    <<: *container_config
     steps:
+      - checkout
       - run:
-        name: Deploy to ghpages
-        command: ./scripts/deploy-ghpages.sh
+          name: Install yarn
+          command: sudo npm install -g yarn
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Build
+          command:
+            npm run build
+            && mkdir -p /tmp/workspace
+            && cp -r dist assets index.html /tmp/workspace
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - assets
+            - dist
+            - index.html
+  deploy:
+    <<: *container_config
+    steps:
+      - *attach_workspace
+      - checkout
+      - run:
+          name: Deploy to ghpages
+          command: ./scripts/deploy-ghpages.sh /tmp/workspace
 
 workflows:
   version: 2
-  deployment:
+  build_and_deploy:
     jobs:
-      - deploy_stage_job:
-        filters:
-          branches:
-            only: master
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: release
