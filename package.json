@@ -4,7 +4,10 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./build.sh"
+    "build": "webpack",
+    "build:watch": "./node_modules/.bin/webpack --progress --watch --config webpack.config.js",
+    "browsersync": "browser-sync start -s --files 'index.html, dist/*.js, dist/*.css'",
+    "dev": "npm-run-all -p build:watch browsersync"
   },
   "repository": {
     "type": "git",
@@ -16,18 +19,18 @@
     "url": "https://github.com/entyo/entyo.github.io/issues"
   },
   "homepage": "https://github.com/entyo/entyo.github.io#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "font-awesome": "^4.7.0",
-    "url-loader": "^0.5.9",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "2.0.0-rc.3",
     "file-loader": "^0.11.2",
+    "font-awesome": "^4.7.0",
     "node-sass": "^4.5.0",
+    "npm-run-all": "^4.1.2",
     "sass-loader": "^5.0.1",
     "skeleton-sass-official": "^3.1.4",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.9",
     "webpack": "^2.2.1"
   }
 }
