@@ -3778,7 +3778,7 @@ ul li a span {
   max-width: 75%;
 }
 
-.profile-icon, .artwork-icon {
+.profile-icon, .artwork-icon, .coming-soon {
   border-radius: 100%;
   display: block;
   margin-left: auto;
