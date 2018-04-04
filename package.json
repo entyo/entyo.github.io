@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "build:watch": "./node_modules/.bin/webpack --progress --watch --config webpack.config.js",
+    "build:watch": "webpack --progress --watch --config webpack.config.js",
     "browsersync": "browser-sync start -s --files 'index.html, dist/*.js, dist/*.css'",
     "dev": "npm-run-all -p build:watch browsersync"
   },
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/entyo/entyo.github.io#readme",
   "dependencies": {},
   "devDependencies": {
+    "browser-sync": "^2.23.6",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "2.0.0-rc.3",
     "file-loader": "^0.11.2",
