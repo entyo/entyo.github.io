@@ -201,7 +201,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<video src=\"../../assets/otaku.mp4\" #origin webkit-playsinline></video>\n<div #rendererContainer></div>"
+module.exports = "<video src=\"../../assets/otaku.mp4\" #origin playsinline></video>\n<div #rendererContainer></div>"
 
 /***/ }),
 
