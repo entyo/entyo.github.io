@@ -14,7 +14,7 @@ references:
       at: *workspace_root
 
 jobs:
-  build:
+  build-and-deploy:
     <<: *container_config
     steps:
       - checkout
@@ -31,30 +31,15 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: Build
+          name: Build then Deploy
           command:
             yarn build
             && mkdir -p /tmp/workspace
             && cp -r dist/* /tmp/workspace
-      - persist_to_workspace:
-          root: *workspace_root
-  deploy:
-    <<: *container_config
-    steps:
-      - *attach_workspace
-      - checkout
-      - run:
-          name: Deploy to ghpages
-          command: ./scripts/deploy-ghpages.sh /tmp/workspace
+            && ./scripts/deploy-ghpages.sh /tmp/workspace
 
 workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: release
+      - build-and-deploy
