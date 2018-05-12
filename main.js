@@ -41,7 +41,7 @@ module.exports = "<div class=\"root-container\">\n  <img src=\"https://i.imgur.c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".root-container {\n  position: absolute;\n  top: 0px;\n  width: 100%;\n  height: auto;\n  text-align: center;\n  overflow-y: scroll; }\n  .root-container img {\n    max-width: 90%; }\n  .root-container .links {\n    max-width: 80%;\n    margin-left: auto;\n    margin-right: auto; }\n  .root-container .links a {\n      text-decoration: none;\n      cursor: pointer; }\n  .root-container .links a i {\n        color: #222222;\n        margin: 0.5em; }\n"
+module.exports = ".root-container {\n  padding: 0.8em;\n  position: absolute;\n  top: 0px;\n  width: 100%;\n  height: auto;\n  text-align: center;\n  overflow-y: scroll; }\n  .root-container img {\n    max-width: 90%; }\n  .root-container .links {\n    max-width: 80%;\n    margin-left: auto;\n    margin-right: auto; }\n  .root-container .links a {\n      text-decoration: none;\n      cursor: pointer; }\n  .root-container .links a i {\n        color: #222222;\n        margin: 0.5em; }\n"
 
 /***/ }),
 
@@ -308,6 +308,7 @@ var BackgroundComponent = /** @class */ (function () {
         this.renderer = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"]();
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
+        this.videoOrigin.nativeElement.autoplay = true;
         this.videoOrigin.nativeElement.crossOrigin = 'anonymous';
         this.videoOrigin.nativeElement.loop = true;
         (function () { return __awaiter(_this, void 0, void 0, function () {
