@@ -64,8 +64,7 @@ export class BackgroundComponent {
 
       this.composer.addPass(new THREE.BloomPass(1.3))
 
-      const l = new THREE.ShaderPass(LuminosityHighPassShader)
-      this.composer.addPass(l)
+      this.composer.addPass(new THREE.ShaderPass(LuminosityHighPassShader))
 
       const copyPass = new THREE.ShaderPass(THREE.CopyShader)
       copyPass.renderToScreen = true
