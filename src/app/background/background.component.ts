@@ -9,6 +9,8 @@ import 'three/examples/js/postprocessing/BloomPass'
 import 'three/examples/js/shaders/CopyShader'
 import 'three/examples/js/shaders/ConvolutionShader'
 
+import { LuminosityHighPassShader } from './shader/LuminosityHighPassShader'
+
 @Component({
   selector: 'app-background',
   templateUrl: './background.component.html',
@@ -61,6 +63,9 @@ export class BackgroundComponent {
       this.composer.addPass(new THREE.RenderPass(this.scene, this.camera))
 
       this.composer.addPass(new THREE.BloomPass(1.3))
+
+      const l = new THREE.ShaderPass(LuminosityHighPassShader)
+      this.composer.addPass(l)
 
       const copyPass = new THREE.ShaderPass(THREE.CopyShader)
       copyPass.renderToScreen = true
