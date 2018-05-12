@@ -18,7 +18,7 @@ import { LuminosityHighPassShader } from './shader/LuminosityHighPassShader'
 })
 export class BackgroundComponent {
   @ViewChild('rendererContainer') rendererContainer: ElementRef<HTMLDivElement>
-  @ViewChild('origin') videoOrigin: ElementRef<HTMLVideoElement>
+  videoOrigin: HTMLVideoElement
 
   private scene: THREE.Scene
   private camera: THREE.Camera
@@ -35,19 +35,18 @@ export class BackgroundComponent {
     this.renderer = new THREE.WebGLRenderer()
     this.renderer.setSize(window.innerWidth, window.innerHeight)
 
-    this.rendererContainer.nativeElement.appendChild(this.renderer.domElement)
-    this.videoOrigin.nativeElement.crossOrigin = 'anonymous'
-    this.videoOrigin.nativeElement.loop = true;
+    this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
     (async () => {
-      await this.videoOrigin.nativeElement.play()
-      this.vTexture = new THREE.Texture(this.videoOrigin.nativeElement)
+      this.videoOrigin = document.getElementById('origin') as HTMLVideoElement
+      await this.videoOrigin.play()
+      this.vTexture = new THREE.Texture(this.videoOrigin)
       this.vTexture.minFilter = THREE.LinearFilter
       this.vTexture.magFilter = THREE.LinearFilter
       this.vTexture.format = THREE.RGBFormat
 
       // videoをplaneとしてsceneに追加
-      const vw = this.videoOrigin.nativeElement.videoWidth
-      const vh = this.videoOrigin.nativeElement.videoHeight
+      const vw = this.videoOrigin.videoWidth
+      const vh = this.videoOrigin.videoHeight
       const videoMaterial = new THREE.MeshBasicMaterial({
         map: this.vTexture
       })
@@ -76,7 +75,7 @@ export class BackgroundComponent {
 
 
   render() {
-    if (this.videoOrigin.nativeElement.readyState === this.videoOrigin.nativeElement.HAVE_ENOUGH_DATA) {
+    if (this.videoOrigin.readyState === this.videoOrigin.HAVE_ENOUGH_DATA) {
       if (this.vTexture) this.vTexture.needsUpdate = true
     }
     // loop
