@@ -5,7 +5,9 @@ import "./js/EnableThreeExamples"
 import 'three/examples/js/postprocessing/EffectComposer'
 import 'three/examples/js/postprocessing/ShaderPass'
 import 'three/examples/js/postprocessing/RenderPass'
+import 'three/examples/js/postprocessing/BloomPass'
 import 'three/examples/js/shaders/CopyShader'
+import 'three/examples/js/shaders/ConvolutionShader'
 
 @Component({
   selector: 'app-background',
@@ -22,7 +24,7 @@ export class BackgroundComponent {
   private vTexture: THREE.Texture
   private composer: THREE.EffectComposer
 
-  constructor() {}
+  constructor() { }
 
   // autoplay loop crossOrigin="anonymous" webkit-playsinline
   ngAfterViewInit() {
@@ -55,17 +57,17 @@ export class BackgroundComponent {
       this.camera = new THREE.OrthographicCamera(vw / -2, vw / 2, vh / 2, vh / -2, 1, 2000)
       this.camera.position.z = 500
 
-      // this.composer = new THREE.EffectComposer(this.renderer)
-      // this.composer.addPass(new THREE.RenderPass(this.scene, this.camera))
+      this.composer = new THREE.EffectComposer(this.renderer)
+      this.composer.addPass(new THREE.RenderPass(this.scene, this.camera))
 
-      // const dotScreenEffect = new THREE.ShaderPass(THREE.DotScreenShader)
-      // this.composer.addPass(dotScreenEffect)
-    
-      // const rgbShiftEffect = new THREE.ShaderPass( THREE.RGBShiftShader );
-      // this.composer.addPass(rgbShiftEffect);
-      // rgbShiftEffect.renderToScreen = true;
-      })()
+      this.composer.addPass(new THREE.BloomPass(1.3))
+
+      const copyPass = new THREE.ShaderPass(THREE.CopyShader)
+      copyPass.renderToScreen = true
+      this.composer.addPass(copyPass)
+
       this.render()
+    })()
   }
 
 
@@ -75,8 +77,8 @@ export class BackgroundComponent {
     }
     // loop
     requestAnimationFrame(this.render.bind(this))
-    this.renderer.render(this.scene, this.camera)
-    // this.composer.render();
+    // this.renderer.render(this.scene, this.camera)
+    this.composer.render();
   }
 
 }
