@@ -28,9 +28,15 @@ export class BackgroundComponent {
 
     this.rendererContainer.nativeElement.appendChild(this.renderer.domElement)
 
-    const light = new THREE.DirectionalLight(0xffffff);
-    light.position.set(1, 1, 1).normalize();
-    this.scene.add( light );
+    const light1 = new THREE.PointLight(0xFFFFFF, 2, 1000)
+    light1.position.set(0, 0, 100)
+    light1.castShadow = true
+    this.scene.add( light1 )
+
+    const light2 = new THREE.PointLight(0xFFFFFF, 2, 1000)
+    light2.position.set(0, 0, -100)
+    light2.castShadow = true
+    this.scene.add( light2 )
 
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
     this.camera.position.set(0, 0, 30)
@@ -39,8 +45,10 @@ export class BackgroundComponent {
     const torusGeometry = new THREE.TorusGeometry(5, 2, 32, 64)
     torusGeometry.rotateX(-Math.PI / 8)
 
-    const torusMaterial = new THREE.MeshBasicMaterial({ color: 0xDC8538, wireframe: true })
-    this.torus = new THREE.Mesh(torusGeometry, torusMaterial);
+    const torusMaterial = new THREE.MeshStandardMaterial({ color: 0xDC8538 })
+    this.torus = new THREE.Mesh(torusGeometry, torusMaterial)
+    this.torus.castShadow = true
+    this.torus.receiveShadow = true
 
     this.scene.add(this.torus)
 
@@ -53,13 +61,13 @@ export class BackgroundComponent {
     // 角度に応じてカメラの位置を設定
     this.camera.position.x = 20 * Math.sin(rad)
     this.camera.position.z = 20 * Math.sin(rad)
-    this.camera.lookAt(new THREE.Vector3(0, 0, 0));
+    this.camera.lookAt(new THREE.Vector3(0, 0, 0))
     this.renderer.render(this.scene, this.camera)
   }
 
   animate() {
     // Do some stuff to object
-    requestAnimationFrame(this.animate.bind(this));
+    requestAnimationFrame(this.animate.bind(this))
     this.render()
   }
 
