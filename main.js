@@ -228,6 +228,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BackgroundComponent", function() { return BackgroundComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
+/* harmony import */ var _js_EnableThreeExamples__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/EnableThreeExamples */ "./src/app/background/js/EnableThreeExamples.js");
+/* harmony import */ var _js_EnableThreeExamples__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_EnableThreeExamples__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var three_examples_js_postprocessing_EffectComposer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! three/examples/js/postprocessing/EffectComposer */ "./node_modules/three/examples/js/postprocessing/EffectComposer.js");
+/* harmony import */ var three_examples_js_postprocessing_EffectComposer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(three_examples_js_postprocessing_EffectComposer__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var three_examples_js_postprocessing_ShaderPass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! three/examples/js/postprocessing/ShaderPass */ "./node_modules/three/examples/js/postprocessing/ShaderPass.js");
+/* harmony import */ var three_examples_js_postprocessing_ShaderPass__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(three_examples_js_postprocessing_ShaderPass__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var three_examples_js_postprocessing_RenderPass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! three/examples/js/postprocessing/RenderPass */ "./node_modules/three/examples/js/postprocessing/RenderPass.js");
+/* harmony import */ var three_examples_js_postprocessing_RenderPass__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(three_examples_js_postprocessing_RenderPass__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var three_examples_js_shaders_CopyShader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! three/examples/js/shaders/CopyShader */ "./node_modules/three/examples/js/shaders/CopyShader.js");
+/* harmony import */ var three_examples_js_shaders_CopyShader__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(three_examples_js_shaders_CopyShader__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _shader_LuminosityHighPassShader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shader/LuminosityHighPassShader */ "./src/app/background/shader/LuminosityHighPassShader.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -237,6 +248,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
+
+
+
+
 
 
 var BackgroundComponent = /** @class */ (function () {
@@ -249,27 +266,39 @@ var BackgroundComponent = /** @class */ (function () {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setClearColor(0xEEEEEE, 1.0);
         this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
-        var light = new three__WEBPACK_IMPORTED_MODULE_1__["DirectionalLight"](0xffffff);
-        light.position.set(1, 1, 1).normalize();
-        this.scene.add(light);
+        var light1 = new three__WEBPACK_IMPORTED_MODULE_1__["PointLight"](0xFFFFFF, 2, 1000);
+        light1.position.set(0, 0, 100);
+        light1.castShadow = true;
+        this.scene.add(light1);
+        var light2 = new three__WEBPACK_IMPORTED_MODULE_1__["PointLight"](0xFFFFFF, 2, 1000);
+        light2.position.set(0, 0, -100);
+        light2.castShadow = true;
+        this.scene.add(light2);
         this.camera = new three__WEBPACK_IMPORTED_MODULE_1__["PerspectiveCamera"](45, window.innerWidth / window.innerHeight, 0.1, 1000);
         this.camera.position.set(0, 0, 30);
         this.camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_1__["Vector3"](0, 0, 0));
         var torusGeometry = new three__WEBPACK_IMPORTED_MODULE_1__["TorusGeometry"](5, 2, 32, 64);
         torusGeometry.rotateX(-Math.PI / 8);
-        var torusMaterial = new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ color: 0xDC8538, wireframe: true });
+        var torusMaterial = new three__WEBPACK_IMPORTED_MODULE_1__["MeshStandardMaterial"]({ color: 0xDC8538 });
         this.torus = new three__WEBPACK_IMPORTED_MODULE_1__["Mesh"](torusGeometry, torusMaterial);
+        this.torus.castShadow = true;
+        this.torus.receiveShadow = true;
         this.scene.add(this.torus);
+        this.composer = new three__WEBPACK_IMPORTED_MODULE_1__["EffectComposer"](this.renderer);
+        this.composer.addPass(new three__WEBPACK_IMPORTED_MODULE_1__["RenderPass"](this.scene, this.camera));
+        this.composer.addPass(new three__WEBPACK_IMPORTED_MODULE_1__["ShaderPass"](_shader_LuminosityHighPassShader__WEBPACK_IMPORTED_MODULE_7__["LuminosityHighPassShader"]));
+        var copyPass = new three__WEBPACK_IMPORTED_MODULE_1__["ShaderPass"](three__WEBPACK_IMPORTED_MODULE_1__["CopyShader"]);
+        copyPass.renderToScreen = true;
+        this.composer.addPass(copyPass);
         this.animate();
     };
     BackgroundComponent.prototype.render = function () {
         var timer = 0.03 * Date.now();
         var rad = timer * Math.PI / 180;
-        // 角度に応じてカメラの位置を設定
         this.camera.position.x = 20 * Math.sin(rad);
         this.camera.position.z = 20 * Math.sin(rad);
         this.camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_1__["Vector3"](0, 0, 0));
-        this.renderer.render(this.scene, this.camera);
+        this.composer.render();
     };
     BackgroundComponent.prototype.animate = function () {
         // Do some stuff to object
@@ -291,6 +320,67 @@ var BackgroundComponent = /** @class */ (function () {
     return BackgroundComponent;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/background/js/EnableThreeExamples.js":
+/*!******************************************************!*\
+  !*** ./src/app/background/js/EnableThreeExamples.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+THREE=__webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
+
+/***/ }),
+
+/***/ "./src/app/background/shader/LuminosityHighPassShader.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/background/shader/LuminosityHighPassShader.ts ***!
+  \***************************************************************/
+/*! exports provided: LuminosityHighPassShader */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LuminosityHighPassShader", function() { return LuminosityHighPassShader; });
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
+
+// https://github.com/mrdoob/three.js/blob/master/examples/js/shaders/LuminosityHighPassShader.js
+var LuminosityHighPassShader = {
+    shaderID: "luminosityHighPass",
+    uniforms: {
+        "tDiffuse": { type: "t", value: null },
+        "luminosityThreshold": { type: "f", value: 0.5 },
+        "smoothWidth": { type: "f", value: 0.5 },
+        "defaultColor": { type: "c", value: new three__WEBPACK_IMPORTED_MODULE_0__["Color"](0x555555) },
+        "defaultOpacity": { type: "f", value: 0.5 }
+    },
+    vertexShader: [
+        "varying vec2 vUv;",
+        "void main() {",
+        "vUv = uv;",
+        "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+        "}"
+    ].join("\n"),
+    fragmentShader: [
+        "uniform sampler2D tDiffuse;",
+        "uniform vec3 defaultColor;",
+        "uniform float defaultOpacity;",
+        "uniform float luminosityThreshold;",
+        "uniform float smoothWidth;",
+        "varying vec2 vUv;",
+        "void main() {",
+        "vec4 texel = texture2D( tDiffuse, vUv );",
+        "vec3 luma = vec3( 0.299, 0.587, 0.114 );",
+        "float v = dot( texel.xyz, luma );",
+        "vec4 outputColor = vec4( defaultColor.rgb, defaultOpacity );",
+        "float alpha = smoothstep( luminosityThreshold, luminosityThreshold + smoothWidth, v );",
+        "gl_FragColor = mix( outputColor, texel, alpha );",
+        "}"
+    ].join("\n")
+};
 
 
 /***/ }),
