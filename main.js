@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"root-container\">\n  <img src=\"https://i.imgur.com/zyJqR1o.png\" alt=\"My icon\">\n  <h1>@e_ntyo</h1>\n  <p>アルゴリズミック・ミュージックやWeb開発をやっている大学生。</p>\n  <p>バンドとアニメとアイドルが好きです ;)</p>\n  <div class=\"links\">\n    <a href=\"https://twitter.com/e_ntyo\" role=\"button\" title=\"Twitter\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-twitter\"></i>\n    </a>\n    <a href=\"https://github.com/entyo\" role=\"button\" title=\"GitHub\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-github\"></i>\n    </a>\n    <a href=\"http://www.amazon.co.jp/registry/wishlist/734KCUBE5PYS\" role=\"button\" title=\"WishList\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-amazon\"></i>\n    </a>\n    <a href=\"https://www.eventernote.com/users/e_ntyo/\" role=\"button\" title=\"Eventer Note\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-file-text-o\"></i>\n    </a>\n    <a href=\"https://medium.com/@e_ntyo\" role=\"button\" title=\"Medium\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-medium\"></i>\n    </a>\n    <a href=\"https://dev.to/e_ntyo\" role=\"button\" title=\"dev.to\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-wrench\"></i>\n    </a>\n    <a href=\"https://slides.com/e_ntyo\" role=\"button\" title=\"slides.com\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-comment\"></i>\n    </a>\n  </div>\n</div>\n"
+module.exports = "<div class=\"root-container\">\n  <img class=\"icon\" src=\"https://i.imgur.com/zyJqR1o.png\" alt=\"My icon\">\n  <h1>@e_ntyo</h1>\n  <p class=\"description\">メディアプログラミングやWeb開発をやっている大学生。バンドとアニメとアイドルが好き。<br>(トーラスは、声優のTorus遥さんの<a target=\"_blank\" href=\"https://www.amazon.co.jp/dp/B00FRFR3XA?tag=amz-mkt-chr-jp-22&ascsubtag=1ba00-01000-org00-linux-other-nomod-jp000-pcomp-feature-scomp-wm-5&ref=aa_scomp\">ドーナツという曲</a>のメタファーです)</p>\n  <div class=\"links\">\n    <a href=\"https://twitter.com/e_ntyo\" role=\"button\" title=\"Twitter\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-twitter\"></i>\n    </a>\n    <a href=\"https://github.com/entyo\" role=\"button\" title=\"GitHub\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-github\"></i>\n    </a>\n    <a href=\"http://www.amazon.co.jp/registry/wishlist/734KCUBE5PYS\" role=\"button\" title=\"WishList\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-amazon\"></i>\n    </a>\n    <a href=\"https://www.eventernote.com/users/e_ntyo/\" role=\"button\" title=\"Eventer Note\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-file-text-o\"></i>\n    </a>\n    <a href=\"https://medium.com/@e_ntyo\" role=\"button\" title=\"Medium\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-medium\"></i>\n    </a>\n    <a href=\"https://dev.to/e_ntyo\" role=\"button\" title=\"dev.to\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-wrench\"></i>\n    </a>\n    <a href=\"https://slides.com/e_ntyo\" role=\"button\" title=\"slides.com\" target=\"_blank\">\n      <i class=\"fa fa-fw fa-comment\"></i>\n    </a>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = "<div class=\"root-container\">\n  <img src=\"https://i.imgur.c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".root-container {\n  padding: 0.8em;\n  position: absolute;\n  top: 0px;\n  width: 100%;\n  height: auto;\n  text-align: center;\n  overflow-y: scroll; }\n  .root-container img {\n    max-width: 90%; }\n  .root-container .links {\n    max-width: 80%;\n    margin-left: auto;\n    margin-right: auto; }\n  .root-container .links a {\n      text-decoration: none;\n      cursor: pointer; }\n  .root-container .links a i {\n        color: #222222;\n        margin: 0.5em; }\n"
+module.exports = "@import url(\"https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css\");\n.root-container {\n  font-family: \"Rounded Mplus 1c\";\n  padding: 0.8em;\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  margin: auto;\n  width: 90%;\n  height: 80%;\n  text-align: center; }\n.root-container .description a {\n    color: #AA0000; }\n.root-container .icon {\n    max-width: 90%; }\n.root-container .links {\n    max-width: 80%;\n    margin-left: auto;\n    margin-right: auto; }\n.root-container .links a {\n      text-decoration: none;\n      cursor: pointer; }\n.root-container .links a i {\n        color: #111111;\n        margin: 0.5em; }\n"
 
 /***/ }),
 
@@ -201,7 +201,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<video autoplay crossorigin=\"anonymous\" loop src=\"../../assets/otaku.mp4\" id=\"origin\" playsinline></video>\n<div #rendererContainer></div>"
+module.exports = "<div #rendererContainer></div>"
 
 /***/ }),
 
@@ -228,21 +228,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BackgroundComponent", function() { return BackgroundComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
-/* harmony import */ var _js_EnableThreeExamples__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/EnableThreeExamples */ "./src/app/background/js/EnableThreeExamples.js");
-/* harmony import */ var _js_EnableThreeExamples__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_EnableThreeExamples__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var three_examples_js_postprocessing_EffectComposer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! three/examples/js/postprocessing/EffectComposer */ "./node_modules/three/examples/js/postprocessing/EffectComposer.js");
-/* harmony import */ var three_examples_js_postprocessing_EffectComposer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(three_examples_js_postprocessing_EffectComposer__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var three_examples_js_postprocessing_ShaderPass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! three/examples/js/postprocessing/ShaderPass */ "./node_modules/three/examples/js/postprocessing/ShaderPass.js");
-/* harmony import */ var three_examples_js_postprocessing_ShaderPass__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(three_examples_js_postprocessing_ShaderPass__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var three_examples_js_postprocessing_RenderPass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! three/examples/js/postprocessing/RenderPass */ "./node_modules/three/examples/js/postprocessing/RenderPass.js");
-/* harmony import */ var three_examples_js_postprocessing_RenderPass__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(three_examples_js_postprocessing_RenderPass__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var three_examples_js_postprocessing_BloomPass__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! three/examples/js/postprocessing/BloomPass */ "./node_modules/three/examples/js/postprocessing/BloomPass.js");
-/* harmony import */ var three_examples_js_postprocessing_BloomPass__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(three_examples_js_postprocessing_BloomPass__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var three_examples_js_shaders_CopyShader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! three/examples/js/shaders/CopyShader */ "./node_modules/three/examples/js/shaders/CopyShader.js");
-/* harmony import */ var three_examples_js_shaders_CopyShader__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(three_examples_js_shaders_CopyShader__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var three_examples_js_shaders_ConvolutionShader__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! three/examples/js/shaders/ConvolutionShader */ "./node_modules/three/examples/js/shaders/ConvolutionShader.js");
-/* harmony import */ var three_examples_js_shaders_ConvolutionShader__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(three_examples_js_shaders_ConvolutionShader__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _shader_LuminosityHighPassShader__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./shader/LuminosityHighPassShader */ "./src/app/background/shader/LuminosityHighPassShader.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -252,50 +237,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-// https://github.com/makimenko/angular-three-examples/blob/master/src/app/scene/scene.component.ts#L3
-
-
-
-
-
-
 
 
 var BackgroundComponent = /** @class */ (function () {
@@ -303,57 +244,37 @@ var BackgroundComponent = /** @class */ (function () {
     }
     // autoplay loop crossOrigin="anonymous" webkit-playsinline
     BackgroundComponent.prototype.ngAfterViewInit = function () {
-        var _this = this;
         this.scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"]();
         this.renderer = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"]();
         this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setClearColor(0xEEEEEE, 1.0);
         this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
-        (function () { return __awaiter(_this, void 0, void 0, function () {
-            var vw, vh, videoMaterial, planeGeometry, plane, copyPass;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.videoOrigin = document.getElementById('origin');
-                        return [4 /*yield*/, this.videoOrigin.play()];
-                    case 1:
-                        _a.sent();
-                        this.vTexture = new three__WEBPACK_IMPORTED_MODULE_1__["Texture"](this.videoOrigin);
-                        this.vTexture.minFilter = three__WEBPACK_IMPORTED_MODULE_1__["LinearFilter"];
-                        this.vTexture.magFilter = three__WEBPACK_IMPORTED_MODULE_1__["LinearFilter"];
-                        this.vTexture.format = three__WEBPACK_IMPORTED_MODULE_1__["RGBFormat"];
-                        vw = this.videoOrigin.videoWidth;
-                        vh = this.videoOrigin.videoHeight;
-                        videoMaterial = new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({
-                            map: this.vTexture
-                        });
-                        planeGeometry = new three__WEBPACK_IMPORTED_MODULE_1__["PlaneGeometry"](vw, vh, 1, 1);
-                        plane = new three__WEBPACK_IMPORTED_MODULE_1__["Mesh"](planeGeometry, videoMaterial);
-                        plane.position.z = 0;
-                        this.scene.add(plane);
-                        this.camera = new three__WEBPACK_IMPORTED_MODULE_1__["OrthographicCamera"](vw / -2, vw / 2, vh / 2, vh / -2, 1, 2000);
-                        this.camera.position.z = 500;
-                        this.composer = new three__WEBPACK_IMPORTED_MODULE_1__["EffectComposer"](this.renderer);
-                        this.composer.addPass(new three__WEBPACK_IMPORTED_MODULE_1__["RenderPass"](this.scene, this.camera));
-                        this.composer.addPass(new three__WEBPACK_IMPORTED_MODULE_1__["BloomPass"](1.3));
-                        this.composer.addPass(new three__WEBPACK_IMPORTED_MODULE_1__["ShaderPass"](_shader_LuminosityHighPassShader__WEBPACK_IMPORTED_MODULE_9__["LuminosityHighPassShader"]));
-                        copyPass = new three__WEBPACK_IMPORTED_MODULE_1__["ShaderPass"](three__WEBPACK_IMPORTED_MODULE_1__["CopyShader"]);
-                        copyPass.renderToScreen = true;
-                        this.composer.addPass(copyPass);
-                        this.render();
-                        return [2 /*return*/];
-                }
-            });
-        }); })();
+        var light = new three__WEBPACK_IMPORTED_MODULE_1__["DirectionalLight"](0xffffff);
+        light.position.set(1, 1, 1).normalize();
+        this.scene.add(light);
+        this.camera = new three__WEBPACK_IMPORTED_MODULE_1__["PerspectiveCamera"](45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        this.camera.position.set(0, 0, 30);
+        this.camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_1__["Vector3"](0, 0, 0));
+        var torusGeometry = new three__WEBPACK_IMPORTED_MODULE_1__["TorusGeometry"](5, 2, 32, 64);
+        torusGeometry.rotateX(-Math.PI / 8);
+        var torusMaterial = new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ color: 0xDC8538, wireframe: true });
+        this.torus = new three__WEBPACK_IMPORTED_MODULE_1__["Mesh"](torusGeometry, torusMaterial);
+        this.scene.add(this.torus);
+        this.animate();
     };
     BackgroundComponent.prototype.render = function () {
-        if (this.videoOrigin.readyState === this.videoOrigin.HAVE_ENOUGH_DATA) {
-            if (this.vTexture)
-                this.vTexture.needsUpdate = true;
-        }
-        // loop
-        requestAnimationFrame(this.render.bind(this));
-        // this.renderer.render(this.scene, this.camera)
-        this.composer.render();
+        var timer = 0.03 * Date.now();
+        var rad = timer * Math.PI / 180;
+        // 角度に応じてカメラの位置を設定
+        this.camera.position.x = 20 * Math.sin(rad);
+        this.camera.position.z = 20 * Math.sin(rad);
+        this.camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_1__["Vector3"](0, 0, 0));
+        this.renderer.render(this.scene, this.camera);
+    };
+    BackgroundComponent.prototype.animate = function () {
+        // Do some stuff to object
+        requestAnimationFrame(this.animate.bind(this));
+        this.render();
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('rendererContainer'),
@@ -370,67 +291,6 @@ var BackgroundComponent = /** @class */ (function () {
     return BackgroundComponent;
 }());
 
-
-
-/***/ }),
-
-/***/ "./src/app/background/js/EnableThreeExamples.js":
-/*!******************************************************!*\
-  !*** ./src/app/background/js/EnableThreeExamples.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-THREE=__webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
-
-/***/ }),
-
-/***/ "./src/app/background/shader/LuminosityHighPassShader.ts":
-/*!***************************************************************!*\
-  !*** ./src/app/background/shader/LuminosityHighPassShader.ts ***!
-  \***************************************************************/
-/*! exports provided: LuminosityHighPassShader */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LuminosityHighPassShader", function() { return LuminosityHighPassShader; });
-/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
-
-// https://github.com/mrdoob/three.js/blob/master/examples/js/shaders/LuminosityHighPassShader.js
-var LuminosityHighPassShader = {
-    shaderID: "luminosityHighPass",
-    uniforms: {
-        "tDiffuse": { type: "t", value: null },
-        "luminosityThreshold": { type: "f", value: 0.5 },
-        "smoothWidth": { type: "f", value: 0.5 },
-        "defaultColor": { type: "c", value: new three__WEBPACK_IMPORTED_MODULE_0__["Color"](0x555555) },
-        "defaultOpacity": { type: "f", value: 0.5 }
-    },
-    vertexShader: [
-        "varying vec2 vUv;",
-        "void main() {",
-        "vUv = uv;",
-        "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
-        "}"
-    ].join("\n"),
-    fragmentShader: [
-        "uniform sampler2D tDiffuse;",
-        "uniform vec3 defaultColor;",
-        "uniform float defaultOpacity;",
-        "uniform float luminosityThreshold;",
-        "uniform float smoothWidth;",
-        "varying vec2 vUv;",
-        "void main() {",
-        "vec4 texel = texture2D( tDiffuse, vUv );",
-        "vec3 luma = vec3( 0.299, 0.587, 0.114 );",
-        "float v = dot( texel.xyz, luma );",
-        "vec4 outputColor = vec4( defaultColor.rgb, defaultOpacity );",
-        "float alpha = smoothstep( luminosityThreshold, luminosityThreshold + smoothWidth, v );",
-        "gl_FragColor = mix( outputColor, texel, alpha );",
-        "}"
-    ].join("\n")
-};
 
 
 /***/ }),
