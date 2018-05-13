@@ -201,7 +201,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<video src=\"../../assets/otaku.mp4\" #origin playsinline></video>\n<div #rendererContainer></div>"
+module.exports = "<video autoplay crossorigin=\"anonymous\" loop src=\"../../assets/otaku.mp4\" #origin playsinline></video>\n<div #rendererContainer></div>"
 
 /***/ }),
 
@@ -308,9 +308,6 @@ var BackgroundComponent = /** @class */ (function () {
         this.renderer = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"]();
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
-        this.videoOrigin.nativeElement.autoplay = true;
-        this.videoOrigin.nativeElement.crossOrigin = 'anonymous';
-        this.videoOrigin.nativeElement.loop = true;
         (function () { return __awaiter(_this, void 0, void 0, function () {
             var vw, vh, videoMaterial, planeGeometry, plane, copyPass;
             return __generator(this, function (_a) {
