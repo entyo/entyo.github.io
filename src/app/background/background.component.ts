@@ -1,6 +1,12 @@
 import { Component, ViewChild, ElementRef } from '@angular/core'
 import * as THREE from 'three'
 
+import "./js/EnableThreeExamples"
+import 'three/examples/js/postprocessing/EffectComposer'
+import 'three/examples/js/postprocessing/ShaderPass'
+import 'three/examples/js/postprocessing/RenderPass'
+import 'three/examples/js/shaders/CopyShader'
+
 import { LuminosityHighPassShader } from './shader/LuminosityHighPassShader'
 
 @Component({
@@ -15,6 +21,7 @@ export class BackgroundComponent {
   private camera: THREE.Camera
   private renderer: THREE.WebGLRenderer
   private torus: THREE.Mesh
+  private composer: THREE.EffectComposer
 
   constructor() { }
 
@@ -52,17 +59,25 @@ export class BackgroundComponent {
 
     this.scene.add(this.torus)
 
+    this.composer = new THREE.EffectComposer(this.renderer)
+    this.composer.addPass(new THREE.RenderPass(this.scene, this.camera))
+    
+    this.composer.addPass(new THREE.ShaderPass(LuminosityHighPassShader))
+
+    const copyPass = new THREE.ShaderPass(THREE.CopyShader)
+    copyPass.renderToScreen = true
+    this.composer.addPass(copyPass)
+
     this.animate()
   }
 
   render() {
     const timer = 0.03 * Date.now()
     const rad = timer * Math.PI / 180
-    // 角度に応じてカメラの位置を設定
     this.camera.position.x = 20 * Math.sin(rad)
     this.camera.position.z = 20 * Math.sin(rad)
     this.camera.lookAt(new THREE.Vector3(0, 0, 0))
-    this.renderer.render(this.scene, this.camera)
+    this.composer.render()
   }
 
   animate() {
