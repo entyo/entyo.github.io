@@ -2,12 +2,6 @@ import { Component, ViewChild, ElementRef } from '@angular/core'
 import * as THREE from 'three'
 // https://github.com/makimenko/angular-three-examples/blob/master/src/app/scene/scene.component.ts#L3
 import "./js/EnableThreeExamples"
-import 'three/examples/js/postprocessing/EffectComposer'
-import 'three/examples/js/postprocessing/ShaderPass'
-import 'three/examples/js/postprocessing/RenderPass'
-import 'three/examples/js/postprocessing/BloomPass'
-import 'three/examples/js/shaders/CopyShader'
-import 'three/examples/js/shaders/ConvolutionShader'
 
 import { LuminosityHighPassShader } from './shader/LuminosityHighPassShader'
 
@@ -18,13 +12,11 @@ import { LuminosityHighPassShader } from './shader/LuminosityHighPassShader'
 })
 export class BackgroundComponent {
   @ViewChild('rendererContainer') rendererContainer: ElementRef<HTMLDivElement>
-  videoOrigin: HTMLVideoElement
 
   private scene: THREE.Scene
   private camera: THREE.Camera
   private renderer: THREE.WebGLRenderer
-  private vTexture: THREE.Texture
-  private composer: THREE.EffectComposer
+  private torus: THREE.Mesh
 
   constructor() { }
 
@@ -34,54 +26,39 @@ export class BackgroundComponent {
 
     this.renderer = new THREE.WebGLRenderer()
     this.renderer.setSize(window.innerWidth, window.innerHeight)
+    this.renderer.setClearColor(0xeeeeee, 1.0)
 
-    this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
-    (async () => {
-      this.videoOrigin = document.getElementById('origin') as HTMLVideoElement
-      await this.videoOrigin.play()
-      this.vTexture = new THREE.Texture(this.videoOrigin)
-      this.vTexture.minFilter = THREE.LinearFilter
-      this.vTexture.magFilter = THREE.LinearFilter
-      this.vTexture.format = THREE.RGBFormat
+    this.rendererContainer.nativeElement.appendChild(this.renderer.domElement)
 
-      // videoをplaneとしてsceneに追加
-      const vw = this.videoOrigin.videoWidth
-      const vh = this.videoOrigin.videoHeight
-      const videoMaterial = new THREE.MeshBasicMaterial({
-        map: this.vTexture
-      })
-      const planeGeometry = new THREE.PlaneGeometry(vw, vh, 1, 1)
-      const plane = new THREE.Mesh(planeGeometry, videoMaterial)
-      plane.position.z = 0
-      this.scene.add(plane)
+    this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
+    this.camera.position.set(0, 0, 30)
+    this.camera.lookAt(new THREE.Vector3(0, 0, 0))
 
-      this.camera = new THREE.OrthographicCamera(vw / -2, vw / 2, vh / 2, vh / -2, 1, 2000)
-      this.camera.position.z = 500
+    const torusGeometry = new THREE.TorusGeometry(5, 2, 32, 64)
+    torusGeometry.rotateX(-Math.PI / 4)
 
-      this.composer = new THREE.EffectComposer(this.renderer)
-      this.composer.addPass(new THREE.RenderPass(this.scene, this.camera))
+    const torusMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+    this.torus = new THREE.Mesh(torusGeometry, torusMaterial);
 
-      this.composer.addPass(new THREE.BloomPass(1.3))
+    this.scene.add(this.torus)
 
-      this.composer.addPass(new THREE.ShaderPass(LuminosityHighPassShader))
-
-      const copyPass = new THREE.ShaderPass(THREE.CopyShader)
-      copyPass.renderToScreen = true
-      this.composer.addPass(copyPass)
-
-      this.render()
-    })()
+    this.animate()
   }
 
-
   render() {
-    if (this.videoOrigin.readyState === this.videoOrigin.HAVE_ENOUGH_DATA) {
-      if (this.vTexture) this.vTexture.needsUpdate = true
-    }
-    // loop
-    requestAnimationFrame(this.render.bind(this))
-    // this.renderer.render(this.scene, this.camera)
-    this.composer.render();
+    const timer = 0.05 * Date.now()
+    const rad = timer * Math.PI / 180
+    // 角度に応じてカメラの位置を設定
+    this.camera.position.x = 20 * Math.sin(rad)
+    this.camera.position.z = -20 * Math.cos(rad)
+    this.camera.lookAt(new THREE.Vector3(0, 0, 0));
+    this.renderer.render(this.scene, this.camera)
+  }
+
+  animate() {
+    // Do some stuff to object
+    requestAnimationFrame(this.animate.bind(this));
+    this.render()
   }
 
 }
