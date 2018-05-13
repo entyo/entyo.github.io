@@ -201,7 +201,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<video autoplay crossorigin=\"anonymous\" loop src=\"../../assets/otaku.mp4\" #origin playsinline></video>\n<div #rendererContainer></div>"
+module.exports = "<video autoplay crossorigin=\"anonymous\" loop src=\"../../assets/otaku.mp4\" id=\"origin\" playsinline></video>\n<div #rendererContainer></div>"
 
 /***/ }),
 
@@ -312,15 +312,17 @@ var BackgroundComponent = /** @class */ (function () {
             var vw, vh, videoMaterial, planeGeometry, plane, copyPass;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.videoOrigin.nativeElement.play()];
+                    case 0:
+                        this.videoOrigin = document.getElementById('origin');
+                        return [4 /*yield*/, this.videoOrigin.play()];
                     case 1:
                         _a.sent();
-                        this.vTexture = new three__WEBPACK_IMPORTED_MODULE_1__["Texture"](this.videoOrigin.nativeElement);
+                        this.vTexture = new three__WEBPACK_IMPORTED_MODULE_1__["Texture"](this.videoOrigin);
                         this.vTexture.minFilter = three__WEBPACK_IMPORTED_MODULE_1__["LinearFilter"];
                         this.vTexture.magFilter = three__WEBPACK_IMPORTED_MODULE_1__["LinearFilter"];
                         this.vTexture.format = three__WEBPACK_IMPORTED_MODULE_1__["RGBFormat"];
-                        vw = this.videoOrigin.nativeElement.videoWidth;
-                        vh = this.videoOrigin.nativeElement.videoHeight;
+                        vw = this.videoOrigin.videoWidth;
+                        vh = this.videoOrigin.videoHeight;
                         videoMaterial = new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({
                             map: this.vTexture
                         });
@@ -344,7 +346,7 @@ var BackgroundComponent = /** @class */ (function () {
         }); })();
     };
     BackgroundComponent.prototype.render = function () {
-        if (this.videoOrigin.nativeElement.readyState === this.videoOrigin.nativeElement.HAVE_ENOUGH_DATA) {
+        if (this.videoOrigin.readyState === this.videoOrigin.HAVE_ENOUGH_DATA) {
             if (this.vTexture)
                 this.vTexture.needsUpdate = true;
         }
@@ -357,10 +359,6 @@ var BackgroundComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('rendererContainer'),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
     ], BackgroundComponent.prototype, "rendererContainer", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('origin'),
-        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
-    ], BackgroundComponent.prototype, "videoOrigin", void 0);
     BackgroundComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-background',
