@@ -30,7 +30,7 @@ export class BackgroundComponent {
     this.scene = new THREE.Scene()
 
     this.renderer = new THREE.WebGLRenderer()
-    this.renderer.setSize(window.innerWidth, window.innerHeight)
+    this.renderer.setSize(window.outerWidth, window.outerHeight)
     this.renderer.setClearColor(0xEEEEEE, 1.0)
 
     this.rendererContainer.nativeElement.appendChild(this.renderer.domElement)
@@ -45,7 +45,7 @@ export class BackgroundComponent {
     light2.castShadow = true
     this.scene.add( light2 )
 
-    this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
+    this.camera = new THREE.PerspectiveCamera(45, window.outerWidth / window.outerHeight, 0.1, 1000)
     this.camera.position.set(0, 0, 30)
     this.camera.lookAt(new THREE.Vector3(0, 0, 0))
 
