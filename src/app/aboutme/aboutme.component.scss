@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css');
 .root-container {
+  font-family: "Rounded Mplus 1c";
   padding: 0.8em;
   position: absolute;
   top: 0;
@@ -6,11 +8,15 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  width: 100%;
+  width: 90%;
   height: 80%;
   text-align: center;
-  overflow-y: scroll;
-  img {
+  .description {
+    a {
+      color: #AA0000;
+    }
+  }
+  .icon {
     max-width: 90%;
   }
   .links {
@@ -18,7 +24,7 @@
       text-decoration: none;
       cursor: pointer;
       i {
-        color: #222222;
+        color: #111111;
         margin: 0.5em;
       }
     }

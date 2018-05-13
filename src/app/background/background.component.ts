@@ -1,7 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core'
 import * as THREE from 'three'
-// https://github.com/makimenko/angular-three-examples/blob/master/src/app/scene/scene.component.ts#L3
-import "./js/EnableThreeExamples"
 
 import { LuminosityHighPassShader } from './shader/LuminosityHighPassShader'
 
@@ -26,18 +24,22 @@ export class BackgroundComponent {
 
     this.renderer = new THREE.WebGLRenderer()
     this.renderer.setSize(window.innerWidth, window.innerHeight)
-    this.renderer.setClearColor(0xeeeeee, 1.0)
+    this.renderer.setClearColor(0xEEEEEE, 1.0)
 
     this.rendererContainer.nativeElement.appendChild(this.renderer.domElement)
+
+    const light = new THREE.DirectionalLight(0xffffff);
+    light.position.set(1, 1, 1).normalize();
+    this.scene.add( light );
 
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
     this.camera.position.set(0, 0, 30)
     this.camera.lookAt(new THREE.Vector3(0, 0, 0))
 
     const torusGeometry = new THREE.TorusGeometry(5, 2, 32, 64)
-    torusGeometry.rotateX(-Math.PI / 4)
+    torusGeometry.rotateX(-Math.PI / 8)
 
-    const torusMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+    const torusMaterial = new THREE.MeshBasicMaterial({ color: 0xDC8538, wireframe: true })
     this.torus = new THREE.Mesh(torusGeometry, torusMaterial);
 
     this.scene.add(this.torus)
@@ -46,11 +48,11 @@ export class BackgroundComponent {
   }
 
   render() {
-    const timer = 0.05 * Date.now()
+    const timer = 0.03 * Date.now()
     const rad = timer * Math.PI / 180
     // 角度に応じてカメラの位置を設定
     this.camera.position.x = 20 * Math.sin(rad)
-    this.camera.position.z = -20 * Math.cos(rad)
+    this.camera.position.z = 20 * Math.sin(rad)
     this.camera.lookAt(new THREE.Vector3(0, 0, 0));
     this.renderer.render(this.scene, this.camera)
   }
