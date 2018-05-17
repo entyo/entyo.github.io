@@ -36,7 +36,7 @@ jobs:
             yarn build
             && mkdir -p /tmp/workspace
             && cp -r dist/* /tmp/workspace
-            && ./scripts/deploy-ghpages.sh /tmp/workspace
+            && ./scripts/deploy-master.sh /tmp/workspace
 
 workflows:
   version: 2
