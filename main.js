@@ -298,7 +298,7 @@ __webpack_require__.r(__webpack_exports__);
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
  * tslint:disable
  */ 
-var styles = ["video[_ngcontent-%COMP%] {\n  display: none; }"];
+var styles = [""];
 
 
 
@@ -337,12 +337,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var BackgroundComponent = /** @class */ (function () {
     function BackgroundComponent() {
-        this.isFuck = /iPad|iPhone|iPod/.test(navigator.userAgent);
     }
     BackgroundComponent.prototype.ngAfterViewInit = function () {
         this.scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"]();
         this.renderer = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"]();
-        this.renderer.setSize(window.outerWidth, window.outerHeight);
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setClearColor(0xEEEEEE, 1.0);
         this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
         var light1 = new three__WEBPACK_IMPORTED_MODULE_1__["PointLight"](0xFFFFFF, 2, 1000);
@@ -353,7 +352,7 @@ var BackgroundComponent = /** @class */ (function () {
         light2.position.set(0, 0, -100);
         light2.castShadow = true;
         this.scene.add(light2);
-        this.camera = new three__WEBPACK_IMPORTED_MODULE_1__["PerspectiveCamera"](45, window.outerWidth / window.outerHeight, 0.1, 1000);
+        this.camera = new three__WEBPACK_IMPORTED_MODULE_1__["PerspectiveCamera"](45, window.innerWidth / window.innerHeight, 0.1, 1000);
         this.camera.position.set(0, 0, 30);
         this.camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_1__["Vector3"](0, 0, 0));
         var torusGeometry = new three__WEBPACK_IMPORTED_MODULE_1__["TorusGeometry"](5, 2, 32, 64);
@@ -366,11 +365,9 @@ var BackgroundComponent = /** @class */ (function () {
         this.composer = new three__WEBPACK_IMPORTED_MODULE_1__["EffectComposer"](this.renderer);
         this.composer.addPass(new three__WEBPACK_IMPORTED_MODULE_1__["RenderPass"](this.scene, this.camera));
         this.composer.addPass(new three__WEBPACK_IMPORTED_MODULE_1__["ShaderPass"](_shader_LuminosityHighPassShader__WEBPACK_IMPORTED_MODULE_7__["LuminosityHighPassShader"]));
-        if (!this.isFuck) {
-            var copyPass = new three__WEBPACK_IMPORTED_MODULE_1__["ShaderPass"](three__WEBPACK_IMPORTED_MODULE_1__["CopyShader"]);
-            copyPass.renderToScreen = true;
-            this.composer.addPass(copyPass);
-        }
+        var copyPass = new three__WEBPACK_IMPORTED_MODULE_1__["ShaderPass"](three__WEBPACK_IMPORTED_MODULE_1__["CopyShader"]);
+        copyPass.renderToScreen = true;
+        this.composer.addPass(copyPass);
         this.animate();
     };
     BackgroundComponent.prototype.render = function () {
@@ -379,12 +376,7 @@ var BackgroundComponent = /** @class */ (function () {
         this.camera.position.x = 20 * Math.sin(rad);
         this.camera.position.z = 20 * Math.sin(rad);
         this.camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_1__["Vector3"](0, 0, 0));
-        if (this.isFuck) {
-            this.renderer.render(this.scene, this.camera);
-        }
-        else {
-            this.composer.render();
-        }
+        this.composer.render();
     };
     BackgroundComponent.prototype.animate = function () {
         // Do some stuff to object
