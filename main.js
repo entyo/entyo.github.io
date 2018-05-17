@@ -341,7 +341,7 @@ var BackgroundComponent = /** @class */ (function () {
     // autoplay loop crossOrigin="anonymous" webkit-playsinline
     BackgroundComponent.prototype.ngAfterViewInit = function () {
         this.scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"]();
-        var p = /iPad|iPhone|iPod/.test(navigator.userAgent) ? { antialias: true } : {};
+        var p = /iPad|iPhone|iPod/.test(navigator.userAgent) ? { antialias: false } : {};
         this.renderer = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"](p);
         this.renderer.setSize(window.outerWidth, window.outerHeight);
         this.renderer.setClearColor(0xEEEEEE, 1.0);
