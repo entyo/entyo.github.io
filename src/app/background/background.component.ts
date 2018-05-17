@@ -29,7 +29,7 @@ export class BackgroundComponent {
   ngAfterViewInit() {
     this.scene = new THREE.Scene()
 
-    const p = /iPad|iPhone|iPod/.test(navigator.userAgent) ? { antialias: true } : {}
+    const p = /iPad|iPhone|iPod/.test(navigator.userAgent) ? { antialias: false } : {}
     this.renderer = new THREE.WebGLRenderer(p)
     this.renderer.setSize(window.outerWidth, window.outerHeight)
     this.renderer.setClearColor(0xEEEEEE, 1.0)
