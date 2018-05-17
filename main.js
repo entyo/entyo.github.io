@@ -339,7 +339,6 @@ var BackgroundComponent = /** @class */ (function () {
     function BackgroundComponent() {
         this.isFuck = /iPad|iPhone|iPod/.test(navigator.userAgent);
     }
-    // autoplay loop crossOrigin="anonymous" webkit-playsinline
     BackgroundComponent.prototype.ngAfterViewInit = function () {
         this.scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"]();
         var p = this.isFuck ? {} : { antialias: true };
