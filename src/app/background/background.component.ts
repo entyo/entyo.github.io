@@ -22,14 +22,17 @@ export class BackgroundComponent {
   private renderer: THREE.WebGLRenderer
   private torus: THREE.Mesh
   private composer: THREE.EffectComposer
+  private isFuck: boolean
 
-  constructor() { }
+  constructor() {
+    this.isFuck = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  }
 
   // autoplay loop crossOrigin="anonymous" webkit-playsinline
   ngAfterViewInit() {
     this.scene = new THREE.Scene()
 
-    const p = /iPad|iPhone|iPod/.test(navigator.userAgent) ? { antialias: false } : {}
+    const p = this.isFuck ? {} : { antialias: true }
     this.renderer = new THREE.WebGLRenderer(p)
     this.renderer.setSize(window.outerWidth, window.outerHeight)
     this.renderer.setClearColor(0xEEEEEE, 1.0)
@@ -65,9 +68,11 @@ export class BackgroundComponent {
     
     this.composer.addPass(new THREE.ShaderPass(LuminosityHighPassShader))
 
-    const copyPass = new THREE.ShaderPass(THREE.CopyShader)
-    copyPass.renderToScreen = true
-    this.composer.addPass(copyPass)
+    if (!this.isFuck) {
+      const copyPass = new THREE.ShaderPass(THREE.CopyShader)
+      copyPass.renderToScreen = true
+      this.composer.addPass(copyPass)
+    }
 
     this.animate()
   }
@@ -78,7 +83,11 @@ export class BackgroundComponent {
     this.camera.position.x = 20 * Math.sin(rad)
     this.camera.position.z = 20 * Math.sin(rad)
     this.camera.lookAt(new THREE.Vector3(0, 0, 0))
-    this.composer.render()
+    if (this.isFuck) {
+      this.renderer.render(this.scene, this.camera)
+    } else {
+      this.composer.render()
+    }
   }
 
   animate() {
