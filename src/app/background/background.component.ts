@@ -22,11 +22,8 @@ export class BackgroundComponent {
   private renderer: THREE.WebGLRenderer
   private torus: THREE.Mesh
   private composer: THREE.EffectComposer
-  private isFuck: boolean
 
-  constructor() {
-    this.isFuck = /iPad|iPhone|iPod/.test(navigator.userAgent);
-  }
+  constructor() { }
 
   ngAfterViewInit() {
     this.scene = new THREE.Scene()
@@ -66,11 +63,10 @@ export class BackgroundComponent {
     
     this.composer.addPass(new THREE.ShaderPass(LuminosityHighPassShader))
 
-    if (!this.isFuck) {
-      const copyPass = new THREE.ShaderPass(THREE.CopyShader)
-      copyPass.renderToScreen = true
-      this.composer.addPass(copyPass)
-    }
+
+    const copyPass = new THREE.ShaderPass(THREE.CopyShader)
+    copyPass.renderToScreen = true
+    this.composer.addPass(copyPass)
 
     this.animate()
   }
@@ -81,11 +77,7 @@ export class BackgroundComponent {
     this.camera.position.x = 20 * Math.sin(rad)
     this.camera.position.z = 20 * Math.sin(rad)
     this.camera.lookAt(new THREE.Vector3(0, 0, 0))
-    if (this.isFuck) {
-      this.renderer.render(this.scene, this.camera)
-    } else {
-      this.composer.render()
-    }
+    this.composer.render()
   }
 
   animate() {
