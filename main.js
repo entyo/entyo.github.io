@@ -341,8 +341,7 @@ var BackgroundComponent = /** @class */ (function () {
     }
     BackgroundComponent.prototype.ngAfterViewInit = function () {
         this.scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"]();
-        var p = this.isFuck ? {} : { antialias: true };
-        this.renderer = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"](p);
+        this.renderer = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"]();
         this.renderer.setSize(window.outerWidth, window.outerHeight);
         this.renderer.setClearColor(0xEEEEEE, 1.0);
         this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
