@@ -28,12 +28,10 @@ export class BackgroundComponent {
     this.isFuck = /iPad|iPhone|iPod/.test(navigator.userAgent);
   }
 
-  // autoplay loop crossOrigin="anonymous" webkit-playsinline
   ngAfterViewInit() {
     this.scene = new THREE.Scene()
 
-    const p = this.isFuck ? {} : { antialias: true }
-    this.renderer = new THREE.WebGLRenderer(p)
+    this.renderer = new THREE.WebGLRenderer()
     this.renderer.setSize(window.outerWidth, window.outerHeight)
     this.renderer.setClearColor(0xEEEEEE, 1.0)
 
