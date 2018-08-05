@@ -9,7 +9,7 @@
   bottom: 0;
   margin: auto;
   width: 90%;
-  height: 540px;
+  max-height: 680px;
   @media screen and (max-height: 736px) {
     overflow-y: scroll;
   }
