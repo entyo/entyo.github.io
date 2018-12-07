@@ -1,37 +1,35 @@
 {
-  "name": "entyo.github.io",
-  "version": "1.0.0",
-  "description": "",
+  "name": "entyo",
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "build:watch": "webpack --progress --watch --config webpack.config.js",
-    "browsersync": "browser-sync start -s --files 'index.html, dist/*.js, dist/*.css'",
-    "dev": "npm-run-all -p build:watch browsersync"
+    "ng": "ng",
+    "start": "ng serve --aot",
+    "build": "ng build --aot",
+    "lint": "ng lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/entyo/entyo.github.io.git"
+  "private": true,
+  "dependencies": {
+    "@angular/common": "^7.1.2",
+    "@angular/compiler": "^7.1.2",
+    "@angular/core": "^7.1.2",
+    "@angular/http": "^7.1.2",
+    "@angular/platform-browser": "^7.1.2",
+    "@angular/platform-browser-dynamic": "^7.1.2",
+    "@fortawesome/fontawesome-free": "^5.5.0",
+    "@types/three": "^0.93.12",
+    "core-js": "^2.6.0",
+    "rxjs": "^6.3.3",
+    "three": "^0.99.0",
+    "typeface-roboto": "^0.0.54",
+    "zone.js": "^0.8.26"
   },
-  "author": "e_ntyo",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/entyo/entyo.github.io/issues"
-  },
-  "homepage": "https://github.com/entyo/entyo.github.io#readme",
-  "dependencies": {},
   "devDependencies": {
-    "browser-sync": "^2.23.6",
-    "css-loader": "^0.26.1",
-    "extract-text-webpack-plugin": "2.0.0-rc.3",
-    "file-loader": "^0.11.2",
-    "font-awesome": "^4.7.0",
-    "node-sass": "^4.5.0",
-    "npm-run-all": "^4.1.2",
-    "sass-loader": "^5.0.1",
-    "skeleton-sass-official": "^3.1.4",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.9",
-    "webpack": "^2.2.1"
+    "@angular-devkit/build-angular": "~0.11.2",
+    "@angular/cli": "~7.1.2",
+    "@angular/compiler-cli": "^7.1.2",
+    "@angular/language-service": "^7.1.2",
+    "codelyzer": "~4.5.0",
+    "tslint": "~5.11.0",
+    "typescript": "3.1.1"
   }
 }

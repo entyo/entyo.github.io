@@ -1,0 +1,69 @@
+@import "~typeface-roboto/index.css";
+
+.aboutme {
+  padding: 0.8em;
+  margin: auto;
+  width: 90%;
+  max-height: 680px;
+
+  text-align: center;
+
+  h1 {
+    font-weight: 800;
+    font-size: 2.5rem;
+  }
+
+  .description {
+    line-height: 2.0em;
+    margin: 1.8em;
+
+    a {
+      color: #aa0000;
+    }
+
+    font-size: 1.0rem;
+  }
+
+  .icon {
+    width: 20rem;
+    height: 20rem;
+  }
+}
+
+.links-container {
+  width: 90%;
+  height: 250px;
+  margin: auto;
+
+  h1 {
+    font-weight: 800;
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+    justify-content: center;
+
+    a {
+      width: 4em;
+      text-decoration: none;
+      cursor: pointer;
+
+      i {
+        font-size: 2.5rem;
+        color: #111111;
+      }
+
+      margin: 0.5em;
+    }
+  }
+}
+
+section {
+  font-family: "roboto";
+  min-height: 100vh;
+  display: flex;
+}
